@@ -12,9 +12,7 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
-
-
-
+import Layouts from 'vite-plugin-vue-layouts'
 
 
 // https://vitejs.dev/config/
@@ -35,6 +33,10 @@ export default defineConfig({
           return svg.replace(/^<svg/, '<svg fill="currentColor"')
         })
       }
+    }),
+    Layouts({
+      layoutsDirs: 'src/layouts',
+      defaultLayout: 'default'
     }),
     AutoImport({
       include: [

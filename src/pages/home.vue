@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
@@ -7,3 +6,8 @@ import TheWelcome from '../components/TheWelcome.vue'
     <div>hello world</div>
   </main>
 </template>
+
+<route lang="yaml">
+  meta:
+    layout: default
+</route>
