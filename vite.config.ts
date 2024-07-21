@@ -4,11 +4,17 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
+
+
+
 
 
 // https://vitejs.dev/config/
@@ -19,6 +25,17 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
     UnoCss(),
+    Icons({
+      compiler: 'vue3',
+      autoInstall: true, // 自动安装图标集,
+      customCollections: {
+        // 自定义图标加载 
+        menu: FileSystemIconLoader('src/assets/icons/svg/menu', (svg) => {
+          // 配合 currentColor 实现颜色切换
+          return svg.replace(/^<svg/, '<svg fill="currentColor"')
+        })
+      }
+    }),
     AutoImport({
       include: [
         /\.[tj]sx?$/,
@@ -28,9 +45,16 @@ export default defineConfig({
       ],
       imports: ['vue', VueRouterAutoImports, '@vueuse/core']
     }),
+
     Components({
       directoryAsNamespace: true, // 自动导入时，目录名作为命名空间
       collapseSamePrefixes: true, // 自动导入时，自动合并相同前缀的导入
+      resolvers: [
+        IconsResolver({
+          prefix: 'icon', // 自定义前缀使用 {prefix}-{collection}-{icon}
+          customCollections: ['menu'], // 自定义图标集合
+        })
+      ]
     })
   ],
   resolve: {

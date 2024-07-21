@@ -6,3 +6,5 @@
 - [x] 引入autoimport自动引入核心库
 - [x] 引入@vueuse
 - [x] 自动注册组件 unplugin-vue-components
+- [x] icon自动引入 unplugin-icons
+- [x] 自定义图标引入
