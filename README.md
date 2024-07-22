@@ -18,3 +18,5 @@
     layout: users
   </route>
   ```
+
+- [x] 引入vue-macros 语法糖

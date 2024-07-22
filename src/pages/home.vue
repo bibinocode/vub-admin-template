@@ -1,13 +1,5 @@
-<script setup lang="ts">
+<script lang="tsx" setup>
+defineRender(() => {
+  return <div>hello word</div>
+})
 </script>
-
-<template>
-  <main>
-    <div>hello world</div>
-  </main>
-</template>
-
-<route lang="yaml">
-  meta:
-    layout: default
-</route>

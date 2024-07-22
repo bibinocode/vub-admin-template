@@ -5,38 +5,38 @@ require('@unocss/eslint-config/flat')
 
 module.exports = {
   root: true,
-  'extends': [
-    "@unocss",
+  env: {
+    node: true,
+    browser: true,
+    es2023: true
+  },
+  extends: [
+    '@unocss',
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     '@vue/eslint-config-typescript',
-    '@vue/eslint-config-prettier/skip-formatting',
+    '@vue/eslint-config-prettier/skip-formatting'
   ],
-  plugin: [
-    "import-helpers/order-imports": [
-      "warn",
+  plugin: ['import'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
+  rules: {
+    '@unocss/order': 'warn',
+    '@unocss/order-attributify': 'warn',
+    'import/order': [
+      'warn',
       {
-        "newlines-between": "always",
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "ignoreCase": true
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always-and-inside-groups',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true
         }
       }
     ]
-  ],
-  parserOptions: {
-    ecmaVersion: 'latest'
-  },
-  rules: {
-    "@unocss/order": "warn",
-    "@unocss/order-attributify": "warn"
   }
 }
