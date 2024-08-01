@@ -13,7 +13,7 @@ import VueMacros from 'unplugin-vue-macros/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import importToCDN from 'vite-plugin-cdn-import'
-
+import { VitePWA } from 'vite-plugin-pwa'
 /** @TODO:自定义CDN导入 */
 const CDN_IMPORT_MAP = [{}]
 
@@ -47,7 +47,6 @@ export function createVitePlugin(): PluginOption[] {
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: ['vue', VueRouterAutoImports, '@vueuse/core']
     }),
-
     Components({
       directoryAsNamespace: true, // 自动导入时，目录名作为命名空间
       collapseSamePrefixes: true, // 自动导入时，自动合并相同前缀的导入
@@ -57,6 +56,9 @@ export function createVitePlugin(): PluginOption[] {
           customCollections: ['menu'] // 自定义图标集合
         })
       ]
+    }),
+    VitePWA({
+      registerType: 'autoUpdate'
     })
   ]
 }

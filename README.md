@@ -20,3 +20,9 @@
   ```
 
 - [x] 引入vue-macros 语法糖
+
+## 依赖升级
+
+- [x] 引入 `npm-check` 来进行检测
+
+- 使用 `npx npm-check -u` 来升级依赖包
