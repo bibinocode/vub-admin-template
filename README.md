@@ -1,5 +1,13 @@
 # b-admin-template
 
+- 使用本仓库作为模版
+
+```bash
+npx degit https://github.com/bibinocode/vub-admin-template.git your-project-name
+```
+
+## 引入的功能
+
 - [x] 约定式文件路由
 
   - [x] 采用方案：unplugin-vue-router
@@ -11,6 +19,7 @@
 - [x] icon自动引入 unplugin-icons
 - [x] 自定义svg图标引入
 - [x] 全局布局：vite-plugin-vue-layouts在需要使用布局组件的地方使用
+- [x] 引入vite-plugin-pwa 实现PWA离线更新
 
   ```Vue
   <route lang="yaml">
